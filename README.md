@@ -1,8 +1,10 @@
-= syncNbackup =
+syncNbackup
+=============
 
-== sync.sh ==
 
-Dependencies: unison, sshfs, backup.sh on the remote host (see below)
+### sync.sh ###
+
+___Dependencies:___ unison, sshfs, backup.sh on the remote host (see below)
 
 Syncronizes a local folder with a remote folder using unison over ssh (sshfs).
 
@@ -10,9 +12,9 @@ When unison ssh support didn't offer the latest ciphers/MAC (on freebsd), this w
 
 To configure it, edit the script and change the config section according to your need
 
-== backup.sh ==
+### backup.sh ###
 
-Dependencies: rsync
+___Dependencies:___ rsync
 
 Creates rolling incremental backups (default 10) using hardlinks, the same way Time Machine does on OSX
 
