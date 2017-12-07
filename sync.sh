@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+########### config ##############
 # Remote host
 REMOTE_HOST=myserver
 
@@ -17,6 +18,8 @@ UNISON_LOG=$HOME/.unison.log
 
 # remote backup.sh script
 BACKUP_SCRIPT=/path/to/backup/script/on/remote/host/backup.sh
+
+##################################
 
 # making sure we are not going to mess up everything
 [ `mountpoint -q $LOCAL_SSHFS_MNT ; echo $?` == "0" ]  && echo " [sync] Something already mounted, cannot proceed!" && exit 1 
@@ -49,5 +52,5 @@ fusermount -u $LOCAL_SSHFS_MNT
 # erasing temp directory
 rmdir $LOCAL_SSHFS_MNT
 
-# Create a rev from commit
+# Create a revision from the last sync using backup.sh, if there were changes
 ssh $REMOTE_HOST $BACKUP_SCRIPT $REMOTE_DIR 
